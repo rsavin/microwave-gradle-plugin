@@ -21,6 +21,14 @@ dependencies {
     compile gradleApi()
 }
 
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: uri('../repo'))
+        }
+    }
+}
+
 group 'com.github.rsavin.gradle'
 version '1.0-SNAPSHOT'
 
