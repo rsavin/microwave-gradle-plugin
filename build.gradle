@@ -1,0 +1,40 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+}
+
+plugins {
+    id 'nu.studer.plugindev' version '1.0.3'
+}
+
+apply plugin: 'groovy'
+apply plugin: 'maven'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile localGroovy()
+    compile gradleApi()
+}
+
+group 'com.github.rsavin.gradle'
+version '1.0-SNAPSHOT'
+
+plugindev {
+    pluginId 'com.github.rsavin.gradle.microwave'
+    pluginName 'microwave-plugin'
+    pluginImplementationClass 'com.github.rsavin.gradle.microwave.MicrowavePlugin'
+    pluginDescription 'A Gradle Plugin that makes beep!' //todo change
+    pluginLicenses 'Apache-2.0'
+    pluginTags 'gradle', 'microwave'
+    authorId 'rsavin'
+    authorName 'Roman Savin'
+    authorEmail 'savin9201@gmail.com'
+    projectUrl 'https://github.com/rsavin/microwave-gradle-plugin'
+    projectInceptionYear '2015'
+    done() // do not omit this
+}
