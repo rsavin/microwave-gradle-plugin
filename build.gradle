@@ -24,7 +24,7 @@ dependencies {
 uploadArchives {
     repositories {
         mavenDeployer {
-            repository(url: uri('../repo'))
+            repository(url: uri('./repo'))
         }
     }
 }
@@ -36,7 +36,7 @@ plugindev {
     pluginId 'com.github.rsavin.gradle.microwave'
     pluginName 'microwave-plugin'
     pluginImplementationClass 'com.github.rsavin.gradle.microwave.MicrowavePlugin'
-    pluginDescription 'A Gradle Plugin that makes beep!' //todo change
+    pluginDescription 'A Gradle Plugin that notifies about ending of the build.'
     pluginLicenses 'Apache-2.0'
     pluginTags 'gradle', 'microwave'
     authorId 'rsavin'
