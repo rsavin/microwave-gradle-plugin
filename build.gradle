@@ -2,13 +2,17 @@ buildscript {
     repositories {
         mavenCentral()
         jcenter()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+
+    dependencies {
+        classpath "com.gradle.publish:plugin-publish-plugin:0.9.1"
     }
 }
 
-plugins {
-    id 'nu.studer.plugindev' version '1.0.3'
-}
-
+apply plugin: "com.gradle.plugin-publish"
 apply plugin: 'groovy'
 apply plugin: 'maven'
 
@@ -21,28 +25,19 @@ dependencies {
     compile gradleApi()
 }
 
-uploadArchives {
-    repositories {
-        mavenDeployer {
-            repository(url: uri('./repo'))
+group 'com.github.rsavin.gradle'
+version '1.0.0'
+
+pluginBundle {
+    website = 'https://github.com/rsavin/microwave-gradle-plugin'
+    vcsUrl = 'https://github.com/rsavin/microwave-gradle-plugin'
+    description = 'A Gradle Plugin that notifies about ending of the build task.'
+    tags = ['notifications']
+
+    plugins {
+        greetingsPlugin {
+            id = 'com.github.rsavin.gradle.microwave'
+            displayName = 'Microwave Gradle Plugin'
         }
     }
-}
-
-group 'com.github.rsavin.gradle'
-version '1.0-SNAPSHOT'
-
-plugindev {
-    pluginId 'com.github.rsavin.gradle.microwave'
-    pluginName 'microwave-plugin'
-    pluginImplementationClass 'com.github.rsavin.gradle.microwave.MicrowavePlugin'
-    pluginDescription 'A Gradle Plugin that notifies about ending of the build.'
-    pluginLicenses 'Apache-2.0'
-    pluginTags 'gradle', 'microwave'
-    authorId 'rsavin'
-    authorName 'Roman Savin'
-    authorEmail 'savin9201@gmail.com'
-    projectUrl 'https://github.com/rsavin/microwave-gradle-plugin'
-    projectInceptionYear '2015'
-    done() // do not omit this
 }
